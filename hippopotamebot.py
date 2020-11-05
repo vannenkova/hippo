@@ -7,10 +7,10 @@ Created on Wed Oct 28 13:13:43 2020
 """
 
 import telebot
-#import os
-#from flask import Flask, request
+import os
+from flask import Flask, request
 
-#server = Flask(__name__)
+server = Flask(__name__)
 
 token = '1305589892:AAEyYeL6k9CIxFrv5E88pSO19plsxiUecKY'
 bot = telebot.TeleBot(token)
@@ -38,12 +38,12 @@ def send_text(message):
         bot.send_sticker(message.chat.id, 'CAACAgIAAxkBAAMRX5lQ_0R0UVXuy2nELNbn89rVu9oAAiICAALPX4sHOkfVfa4YzYwbBA')
 
 #bot.polling()
-#@server.route("/")
-#def webhook():
-    #bot.remove_webhook()
-    #bot.set_webhook(url='https://warm-headland-90063.herokuapp.com/' + tokenBot.TOKEN)
-    #return "!", 200
+@server.route("/")
+def webhook():
+    bot.remove_webhook()
+    bot.set_webhook(url='https://warm-headland-90063.herokuapp.com/' + tokenBot.TOKEN)
+    return "!", 200
 
-#if __name__ == '__main__':
-    #server.debug = True
-    #server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
+if __name__ == '__main__':
+    server.debug = True
+    server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
